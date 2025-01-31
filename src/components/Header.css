@@ -15,8 +15,13 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  
 }
 
+.title,
+.login-button {
+  color: black;
+}
 .menu-icon {
   margin-right: 16px;
 }
