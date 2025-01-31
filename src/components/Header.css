@@ -1,0 +1,33 @@
+/* Header Styles */
+.appbar {
+  background-color: rgb(255, 255, 255) !important;
+  color: black;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu-icon {
+  margin-right: 16px;
+}
+
+.login-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 6px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
