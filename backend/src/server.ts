@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cookieParser());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "views")));
 
 const instance = new Razorpay({
   key_id: process.env.RZP_KEY_ID,
@@ -24,8 +25,7 @@ const instance = new Razorpay({
 });
 
 app.get("/", function (req, res, next) {
-  res.json('API is running')
-  // res.render("index", { title: "Express" });
+  res.render("index", { title: "Express" });
 });
 
 app.get("/api/v1/rzp_capture/:payment_id", (req, res) => {
