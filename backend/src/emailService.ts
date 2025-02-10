@@ -5,7 +5,10 @@ dotenv.config();
 
 // Define email transport
 const transporter = nodemailer.createTransport({
-  service: "gmail", // Use 'gmail', 'outlook', or configure SMTP
+  host: "mail.privateemail.com",
+  port: 587, // TLS port
+  secure: false, // Use TLS (starttls)
+  service: "smtp", // Use 'gmail', 'outlook', or configure SMTP
   auth: {
     user: process.env.EMAIL_USER as string, // Your email
     pass: process.env.EMAIL_PASS as string, // App password (not normal email password)
@@ -18,7 +21,10 @@ const transporter = nodemailer.createTransport({
  * @param pdfLink - Link to the generated PDF report.
  * @returns A promise indicating success or failure.
  */
-export async function sendEmail(email: string, pdfLink: string): Promise<{ success: boolean; message?: string; error?: any }> {
+export async function sendEmail(
+  email: string,
+  pdfLink: string
+): Promise<{ success: boolean; message?: string; error?: any }> {
   const mailOptions = {
     from: process.env.EMAIL_USER as string,
     to: email,
