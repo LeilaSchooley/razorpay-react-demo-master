@@ -104,7 +104,7 @@ export function Hero() {
     // Call python backend on port 4000
     async function submitVIN(vin: string) {
       const response = await fetch(
-        `${import.meta.env.PYTHON_ENDPOINT}/api/scrape-vin`,
+        `${import.meta.env.VITE_PYTHON_ENDPOINT}/api/scrape-vin`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -118,7 +118,7 @@ export function Hero() {
 
     async function sendEmailRequest(email: string, pdfLink: any) {
       const response = await fetch(
-        `${import.meta.env.PYTHON_ENDPOINT}/api/send-email`,
+        `${import.meta.env.VITE_PYTHON_ENDPOINT}/api/send-email`,
         {
           method: "POST",
           headers: {
