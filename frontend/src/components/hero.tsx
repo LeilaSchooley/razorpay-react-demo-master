@@ -103,24 +103,30 @@ export function Hero() {
     }
     // Call python backend on port 4000
     async function submitVIN(vin: string) {
-      const response = await fetch("http://127.0.0.1:4000/api/scrape-vin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ vin }),
-      });
+      const response = await fetch(
+        `${import.meta.env.PYTHON_ENDPOINT}/api/scrape-vin`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ vin }),
+        }
+      );
 
       const data = await response.json();
       checkTaskStatus(data.task_id); // Start checking status
     }
 
     async function sendEmailRequest(email: string, pdfLink: any) {
-      const response = await fetch("http://127.0.0.1:3000/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, pdf_link: pdfLink }),
-      });
+      const response = await fetch(
+        `${import.meta.env.PYTHON_ENDPOINT}/api/send-email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, pdf_link: pdfLink }),
+        }
+      );
 
       const data = await response.json();
       console.log("Server Response:", data);
