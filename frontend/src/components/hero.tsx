@@ -90,7 +90,7 @@ export function Hero() {
             window.location.href = taskData.pdf_path; // Redirect to S3 file
             console.log(taskData.pdf_link);
 
-            sendEmailRequest("vortex962@zoho.com", taskData.pdf_path);
+            sendEmailRequest(options.prefill.email, taskData.pdf_path);
 
             return;
           }
