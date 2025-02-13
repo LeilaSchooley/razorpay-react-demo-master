@@ -1,19 +1,22 @@
-import { Header } from "@/components/header";
-import { Hero } from "@/components/hero";
-import { Benefits } from "@/components/benefits";
-import { FAQ } from "@/components/faq";
-import { Footer } from "@/components/footer";
+// App.tsx
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import PrivacyPolicy from "./PrivacyPolicy";
+import TermsAndConditions from "./TermsAndConditions";
+import RefundCancellationShippingPolicy from "./RefundCancellationShippingPolicy";
+import ThankYou from "./ThankYou";
 
-export default function Page() {
+export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <Benefits />
-        <FAQ />
-      </main>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/refunds" element={<RefundCancellationShippingPolicy />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+      </Routes>
     </div>
   );
 }

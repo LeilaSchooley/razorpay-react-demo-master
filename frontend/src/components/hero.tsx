@@ -8,7 +8,7 @@ export function Hero() {
   const [vinNumber, setVinNumber] = useState("");
   const [email, setEmail] = useState("");
   const payment_amount = 400; // $4 in cents
-
+  console.log(import.meta.env.VITE_PYTHON_ENDPOINT);
   const paymentHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -34,8 +34,7 @@ export function Hero() {
       handler(response: any) {
         console.log("Payment successful:", response);
         // Here you can add logic to handle successful payment,
-        console.log(options);
-        console.log(options.prefill.email);
+
         // such as redirecting to a success page or showing a modal
 
         // Define your payment data
@@ -45,8 +44,10 @@ export function Hero() {
           // transactionId: "txn_123456789"
         };
 
+        window.location.href = "/thank-you"; // Redirect to S3 file
+
         // Make a POST request using fetch
-        fetch("http://localhost:3000/api/save-payment", {
+        fetch(`${import.meta.env.VITE_VERCEL_URL}/api/save-payment`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -70,7 +71,6 @@ export function Hero() {
             // Handle the error, e.g., display an error message to the user
           });
 
-        console.log(vinNumber);
         submitVIN(vinNumber);
       },
     };
@@ -80,15 +80,15 @@ export function Hero() {
 
         try {
           const response = await fetch(
-            `http://127.0.0.1:4000/api/task/${taskId}`
+            `${import.meta.env.VITE_PYTHON_ENDPOINT}/api/task/${taskId}`
           );
           const taskData = await response.json();
           if (taskData.status === "completed") {
             console.log("Done");
 
-            console.log(taskData);
+            //console.log(taskData);
             window.location.href = taskData.pdf_path; // Redirect to S3 file
-            console.log(taskData.pdf_link);
+            //console.log(taskData.pdf_link);
 
             sendEmailRequest(options.prefill.email, taskData.pdf_path);
 
@@ -118,7 +118,7 @@ export function Hero() {
 
     async function sendEmailRequest(email: string, pdfLink: any) {
       const response = await fetch(
-        `${import.meta.env.VITE_PYTHON_ENDPOINT}/api/send-email`,
+        `${import.meta.env.VITE_VERCEL_URL}/api/send-email`,
         {
           method: "POST",
           headers: {

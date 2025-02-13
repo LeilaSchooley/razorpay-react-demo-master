@@ -29,7 +29,7 @@ export function Footer() {
                   to="#"
                   className="text-sm text-muted-foreground hover:text-primary"
                 >
-                  Careers
+                  Refunds, Cancellation and Shipping Policy
                 </Link>
               </li>
             </ul>
@@ -42,12 +42,12 @@ export function Footer() {
                   to="#"
                   className="text-sm text-muted-foreground hover:text-primary"
                 >
-                  Help Center
+                  Terms and Conditions
                 </Link>
               </li>
               <li>
                 <Link
-                  to="#"
+                  to="/terms"
                   className="text-sm text-muted-foreground hover:text-primary"
                 >
                   Contact Us
@@ -55,7 +55,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="#"
+                  to="/privacy"
                   className="text-sm text-muted-foreground hover:text-primary"
                 >
                   Privacy Policy
